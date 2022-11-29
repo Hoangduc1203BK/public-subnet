@@ -1,6 +1,7 @@
 import Express from "express";
 import dotenv from "dotenv";
 import { UserAPI } from "./router/user/user.api.js";
+import { PrivateAPI } from "./router/get-private-subnet/private-subnet.api.js";
 
 const Main = async () => {
   dotenv.config();
@@ -11,9 +12,7 @@ const Main = async () => {
 
   app.use('/user', UserAPI())
 
-  app.get("/get-private-data", (req, res) => {
-    res.json("1");
-  });
+  app.use("/private-subnet", PrivateAPI());
 
   app.listen(port, (err) => {
     if (err) {
